@@ -18,21 +18,23 @@ export const COMPONENT_INITIALS = 'bui-text-avatar';
 })
 export class TextAvatarComponent implements OnInit {
 
-  _name: string;
-  get name(): string {
-    return this._name;
+  private _text: string;
+  get text(): string {
+    return this._text;
   }
-  @Input() set name(value: string) {
-    this._name = value;
-    this.initials = this.extractInitials(value);
+  @Input() set text(value: string) {
+    this._text = value;
+    this.finalText = this.extractInitials(value);
   }
 
   @Input() backColor: string;
   @Input() textColor: string;
-  @Input() extractType: string;
+  @Input() formatType: string;
+  @Input() width = '100%';
+  @Input() height = '100%';
+  @Input() borderRadius = '100%';
 
-  public initials: string;
-  public fontSize: number;
+  public finalText: string;
   public hasOneInitial = false;
 
   private randomColorRadixBase = 16;
@@ -51,15 +53,24 @@ export class TextAvatarComponent implements OnInit {
     this.textColor = (!this.textColor) ? this.convertHexToBW(this.backColor) : this.textColor;
   }
 
+  public styleObject(): object {
+    return {
+      'background-color': this.backColor,
+      width: this.width,
+      height: this.height,
+      'border-radius': `${this.borderRadius}`
+    };
+  }
+
   private extractInitials(name: string): string {
 
     let initials = this.extractFirstAndLast(name);
 
-    if (this.extractType === TEXT_AVATAR_TYPE.F_L) {
+    if (this.formatType === TEXT_AVATAR_TYPE.F_L) {
       initials = this.extractFirstAndLast(name);
     }
 
-    if (this.extractType === TEXT_AVATAR_TYPE.F_F) {
+    if (this.formatType === TEXT_AVATAR_TYPE.F_F) {
       initials = this.extractFirstAndFirst(name);
     }
 

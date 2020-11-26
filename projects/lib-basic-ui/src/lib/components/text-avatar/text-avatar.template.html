@@ -1,7 +1,14 @@
-<section class="text-avatar-container" [ngStyle]="{'background-color': backColor}">
+<section
+  class="text-avatar-container"
+  [ngStyle]="styleObject()">
   <svg viewBox="0 0 30 30">
     <g>
-      <text x="50%" y="50%" [ngStyle]="{'fill': textColor}" text-anchor="middle" dy=".35em">{{ initials }}</text>
+      <text
+        x="50%" y="50%"
+        [ngStyle]="{'fill': textColor}"
+        text-anchor="middle"
+        dy=".35em">{{ finalText }}
+      </text>
     </g>
   </svg>
 </section>
