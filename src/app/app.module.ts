@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LibBasicUiModule } from '../../projects/lib-basic-ui/src';
+import { InitialsModule, LibBasicUiModule } from '../../projects/lib-basic-ui/src';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LibBasicUiModule
+    LibBasicUiModule,
+    InitialsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
