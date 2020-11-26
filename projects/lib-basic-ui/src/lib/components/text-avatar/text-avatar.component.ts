@@ -5,18 +5,18 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { INITIALS_TYPE } from './enums/initials-type.enum';
+import { TEXT_AVATAR_TYPE } from './enums/text-avatar-type.enum';
 
-export const COMPONENT_INITIALS = 'san-initials';
+export const COMPONENT_INITIALS = 'bui-text-avatar';
 
 @Component({
   selector: COMPONENT_INITIALS,
-  templateUrl: './initials.template.html',
-  styleUrls: ['./initials.styles.scss'],
+  templateUrl: './text-avatar.template.html',
+  styleUrls: ['./text-avatar.styles.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class InitialsComponent implements OnInit {
+export class TextAvatarComponent implements OnInit {
 
   _name: string;
   get name(): string {
@@ -55,11 +55,11 @@ export class InitialsComponent implements OnInit {
 
     let initials = this.extractFirstAndLast(name);
 
-    if (this.extractType === INITIALS_TYPE.F_L) {
+    if (this.extractType === TEXT_AVATAR_TYPE.F_L) {
       initials = this.extractFirstAndLast(name);
     }
 
-    if (this.extractType === INITIALS_TYPE.F_F) {
+    if (this.extractType === TEXT_AVATAR_TYPE.F_F) {
       initials = this.extractFirstAndFirst(name);
     }
 

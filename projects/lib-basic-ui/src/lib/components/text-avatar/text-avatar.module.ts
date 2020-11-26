@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { InitialsComponent } from './initials.component';
+import { TextAvatarComponent } from './text-avatar.component';
 
 
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [
-    InitialsComponent,
+    TextAvatarComponent,
   ],
-  exports: [InitialsComponent],
+  exports: [TextAvatarComponent],
   providers: [],
 })
-export class InitialsModule {}
+export class TextAvatarModule {}
