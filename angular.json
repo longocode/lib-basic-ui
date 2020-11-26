@@ -122,6 +122,46 @@
           }
         }
       }
+    },
+    "lib-basic-ui": {
+      "projectType": "library",
+      "root": "projects/lib-basic-ui",
+      "sourceRoot": "projects/lib-basic-ui/src",
+      "prefix": "bui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/lib-basic-ui/tsconfig.lib.json",
+            "project": "projects/lib-basic-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lib-basic-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lib-basic-ui/src/test.ts",
+            "tsConfig": "projects/lib-basic-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/lib-basic-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lib-basic-ui/tsconfig.lib.json",
+              "projects/lib-basic-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "libraries"
