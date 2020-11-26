@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TEXT_AVATAR_TYPE } from 'projects/lib-basic-ui/src/lib/components/text-avatar';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'libraries';
+  textAvatarType = TEXT_AVATAR_TYPE;
 }

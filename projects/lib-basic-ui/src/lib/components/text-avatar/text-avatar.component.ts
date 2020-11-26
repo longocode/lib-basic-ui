@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   Input,
@@ -16,7 +17,7 @@ export const COMPONENT_INITIALS = 'bui-text-avatar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class TextAvatarComponent implements OnInit {
+export class TextAvatarComponent implements OnInit, AfterViewInit {
 
   private _text: string;
   get text(): string {
@@ -24,12 +25,11 @@ export class TextAvatarComponent implements OnInit {
   }
   @Input() set text(value: string) {
     this._text = value;
-    this.finalText = this.extractInitials(value);
   }
 
   @Input() backColor: string;
   @Input() textColor: string;
-  @Input() formatType: string;
+  @Input() formatType = TEXT_AVATAR_TYPE.F_L;
   @Input() width = '100%';
   @Input() height = '100%';
   @Input() borderRadius = '100%';
@@ -51,6 +51,10 @@ export class TextAvatarComponent implements OnInit {
   ngOnInit() {
     this.backColor = (!this.backColor) ? this.getRandomColor() : this.backColor;
     this.textColor = (!this.textColor) ? this.convertHexToBW(this.backColor) : this.textColor;
+    this.finalText = this.extractInitials(this._text);
+  }
+
+  ngAfterViewInit() {
   }
 
   public styleObject(): object {
@@ -66,6 +70,8 @@ export class TextAvatarComponent implements OnInit {
 
     let initials = this.extractFirstAndLast(name);
 
+    console.log(this.formatType);
+
     if (this.formatType === TEXT_AVATAR_TYPE.F_L) {
       initials = this.extractFirstAndLast(name);
     }
@@ -79,7 +85,6 @@ export class TextAvatarComponent implements OnInit {
     }
 
     return initials;
-
   }
 
   private extractFirstAndLast(name: string): string {
