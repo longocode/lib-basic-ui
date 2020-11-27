@@ -27,6 +27,7 @@ export class TextAvatarComponent implements OnInit, AfterViewInit {
     this._text = value;
   }
 
+  @Input() viewBox = '0 0 30 30';
   @Input() backColor: string;
   @Input() textColor: string;
   @Input() formatType = TEXT_AVATAR_TYPE.F_L;
